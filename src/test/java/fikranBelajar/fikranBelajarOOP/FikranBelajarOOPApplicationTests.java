@@ -1,10 +1,10 @@
-package fikranBelajar.fikranBelajarAja;
+package fikranBelajar.fikranBelajarOOP;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class FikranBelajarAjaApplicationTests {
+class FikranBelajarOOPApplicationTests {
 
 	@Test
 	void contextLoads() {

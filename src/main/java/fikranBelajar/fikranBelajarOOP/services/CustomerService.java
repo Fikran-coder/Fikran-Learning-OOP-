@@ -1,7 +1,7 @@
-package fikranBelajar.fikranBelajarAja.services;
+package fikranBelajar.fikranBelajarOOP.services;
 
-import fikranBelajar.fikranBelajarAja.models.Customer;
-import fikranBelajar.fikranBelajarAja.repositories.CustomerRepository;
+import fikranBelajar.fikranBelajarOOP.models.Customer;
+import fikranBelajar.fikranBelajarOOP.repositories.CustomerRepository;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,7 +36,12 @@ public class CustomerService {
         }
         return value;
     }
-    public Customer getCustomerById(Integer id){
-        return customerRepository.findByCustomerId(id);
+    public Customer getCustomerById(Integer id) throws NotFoundException {
+        Customer customer = customerRepository.findByCustomerId(id);
+        if(customer == null){
+            throw new NotFoundException("not found");
+        }
+
+        return customer;
     }
 }

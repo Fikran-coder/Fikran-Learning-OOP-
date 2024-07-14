@@ -1,4 +1,4 @@
-package fikranBelajar.fikranBelajarAja.models;
+package fikranBelajar.fikranBelajarOOP.models;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,13 +1,13 @@
-package fikranBelajar.fikranBelajarAja;
+package fikranBelajar.fikranBelajarOOP;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FikranBelajarAjaApplication {
+public class FikranBelajarOOPApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FikranBelajarAjaApplication.class, args);
+		SpringApplication.run(FikranBelajarOOPApplication.class, args);
 	}
 
 }

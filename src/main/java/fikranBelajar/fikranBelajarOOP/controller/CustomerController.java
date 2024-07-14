@@ -1,9 +1,10 @@
-package fikranBelajar.fikranBelajarAja.controller;
+package fikranBelajar.fikranBelajarOOP.controller;
 
-import fikranBelajar.fikranBelajarAja.models.Customer;
-import fikranBelajar.fikranBelajarAja.services.CustomerService;
+import fikranBelajar.fikranBelajarOOP.models.Customer;
+import fikranBelajar.fikranBelajarOOP.services.CustomerService;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -55,13 +56,13 @@ public class CustomerController {
     }
 
     @GetMapping("/getCustomerById")
-    public Customer getCustomerById(@RequestParam Integer id) throws NotFoundException {
-        Customer customer =null;
+    public ResponseEntity<Object> getCustomerById(@RequestParam Integer id) {
         try {
-            customer = customerService.getCustomerById(id);
-        }catch (Exception e){
-            e.getMessage();
+            Customer customer = customerService.getCustomerById(id);
+            return ResponseEntity.ok(customer); // Return customer if found
+        } catch (NotFoundException e) {
+            // Return a JSON response with the error message and 404 status
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
-        return customer;
     }
 }
