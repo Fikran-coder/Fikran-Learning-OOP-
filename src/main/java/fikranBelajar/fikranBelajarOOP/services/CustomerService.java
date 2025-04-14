@@ -6,6 +6,8 @@ import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CustomerService {
     @Autowired
@@ -37,11 +39,15 @@ public class CustomerService {
         return value;
     }
     public Customer getCustomerById(Integer id) throws NotFoundException {
-        Customer customer = customerRepository.findByCustomerId(id);
+        Customer customer = customerRepository.findCustomerByCustomerId(id);
         if(customer == null){
             throw new NotFoundException("not found");
         }
 
         return customer;
+    }
+
+    public List<Customer> getAllCustomers() {
+        return customerRepository.findAll();
     }
 }

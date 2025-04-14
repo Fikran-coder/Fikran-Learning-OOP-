@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 public interface CustomerRepository extends JpaRepository<Customer,Integer> {
 
     public Customer searchCustomerByFirstName(String firstName);
-    public Customer findByCustomerId(Integer customerId) throws NotFoundException;
 
+    Customer findCustomerByCustomerId(Integer customerId);
 }

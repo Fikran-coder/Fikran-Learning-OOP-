@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 @RestController
@@ -36,13 +37,12 @@ public class CustomerController {
     }
 
 
-    @GetMapping("/getCustomer")
-    public Customer getCustomer(@RequestParam String firstName) {
-        Customer customer =null;
+    @GetMapping("/getCustomer/{firstName}")
+    public Customer getCustomer(@PathVariable String firstName) {
+        Customer customer = null;
         try {
             customer = customerService.findCustomer(firstName);
-
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             e.getMessage();
         }
@@ -64,5 +64,17 @@ public class CustomerController {
             // Return a JSON response with the error message and 404 status
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
+    }
+
+    @GetMapping("/getAll")
+    public List<Customer> getAllCustomers() {
+        List<Customer> customer = null;
+        try {
+            customer = customerService.getAllCustomers();
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getMessage();
+        }
+        return customer;
     }
 }
